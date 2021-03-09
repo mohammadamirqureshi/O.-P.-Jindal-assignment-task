@@ -1,14 +1,20 @@
 $(document).ready(function() {
-    var newDataSet =(query) =>{
+    var newDataSet =() =>{
 
+    	// Reading query from DOM
+    	
         var query = $('#queryID option:selected').val();
         var newDataSetLocal=[];
+
+        //show all students
 
         if(query === 'nothing'){
             for(let i=0;i<dataSet.length;i++){
                 newDataSetLocal=dataSet;
             }
         }
+
+        //show only 2K17 batch students
 
         else if(query === '2K17'){
             for(let i=0;i<dataSet.length;i++){
@@ -17,6 +23,8 @@ $(document).ready(function() {
             }
         }
 
+        // Show only 2K16 batch student
+
         else if(query === '2K16'){
             for(let i=0;i<dataSet.length;i++){
                 if(dataSet[i][1]==='2K16')
@@ -24,12 +32,16 @@ $(document).ready(function() {
             }
         }
 
+        // Show only ECE students
+
         else if(query === 'ECE'){
             for(let i=0;i<dataSet.length;i++){
                 if(dataSet[i][2]==='ECE')
                 newDataSetLocal.push(dataSet[i]);
             }
         }
+
+        // Show only COE Students
 
         else if(query === 'COE'){
             for(let i=0;i<dataSet.length;i++){
@@ -40,6 +52,9 @@ $(document).ready(function() {
 
         return newDataSetLocal;
     }
+
+
+    // Show button clicked
     
     $('#show').click(function () {
        var table= $('#example').DataTable( {
